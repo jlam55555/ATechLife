@@ -1,2 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DATA></DATA>
+<DATA>
+  <POINT name="asd" gender="male" time="1432674682">
+    <GE_1>off</GE_1>
+    <GE_2>off</GE_2>
+    <GE_3>others</GE_3>
+    <GE_4>harmgood</GE_4>
+    <IN_1>off</IN_1>
+    <IN_2>23</IN_2>
+    <IN_3>2010</IN_3>
+    <IN_4>off</IN_4>
+    <SM_1>off</SM_1>
+    <SM_2>323</SM_2>
+    <SM_3_FB>off</SM_3_FB>
+    <SM_3_IN>off</SM_3_IN>
+    <SM_3_TW>off</SM_3_TW>
+    <ST_1_HO>21</ST_1_HO>
+    <ST_1_YO>23</ST_1_YO>
+    <ST_2_DE>off</ST_2_DE>
+    <ST_2_LA>off</ST_2_LA>
+    <ST_2_OT>off</ST_2_OT>
+    <ST_2_SM>off</ST_2_SM>
+    <ST_2_TA>off</ST_2_TA>
+    <ST_3>12</ST_3>
+    <ST_4_GA>off</ST_4_GA>
+    <ST_4_IN>off</ST_4_IN>
+    <ST_4_ME>off</ST_4_ME>
+    <ST_4_OC>off</ST_4_OC>
+    <ST_4_OT>off</ST_4_OT>
+    <ST_4_SC>off</ST_4_SC>
+    <ST_4_SM>off</ST_4_SM>
+  </POINT>
+</DATA>
