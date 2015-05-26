@@ -11,7 +11,7 @@
 	<P>Feel free to share this &mdash; I need more data! So far, I have <?php
 		$xml = simplexml_load_file("data/data.xml");
 		$x = 0;
-		foreach($xml->point as $point)
+		foreach($xml->POINT as $point)
 			$x++;
 		echo $x;
 		?> survey submissions, but I am looking for at least 20. My presentation will be on Tuesday, June 2nd.</P>

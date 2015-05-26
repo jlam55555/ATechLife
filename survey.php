@@ -2,8 +2,8 @@
 	<H2>Survey</H2>
 	<?php
 		if(isset($_GET["err"])) {
-			if($_GET["err"] == "blank")
-				echo "<SPAN style='font-family: pier_bold; color: red;'>A field was left blank.</SPAN>";
+			if($_GET["err"] == "invalid")
+				echo "<SPAN style='font-family: pier_bold; color: red;'>A field was left blank, or a number was negative or a decimal.</SPAN>";
 			if($_GET["err"] == "wait")
 				echo "<SPAN style='font-family: pier_bold; color: red;'>Please wait a few minutes before making another submission. This is to protect against spamming.</SPAN>";
 			if($_GET["err"] == "exists")
