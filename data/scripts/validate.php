@@ -38,6 +38,7 @@
 	$point = $data->addChild("POINT");
 	$point->addAttribute("name", $name);
 	$point->addAttribute("gender", $gender);
+	$point->addAttribute("time", time());
 	foreach($answers as $val)
 		$point->addChild(strtoupper($val), $$val);
 	// Format output
