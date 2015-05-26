@@ -1,0 +1,99 @@
+/* "pier" fonts courtesy of https://www.behance.net/gallery/23196691/PIER-FREE-TYPEFACE */
+@font-face {
+	font-family: pier;
+	src: url(font/pier-regular.otf);
+}
+@font-face {
+	font-family: pier_bold;
+	src: url(font/pier-bold.otf);
+}
+@font-face {
+	font-family: pier_italic;
+	src: url(font/pier-italic.otf);
+}
+a {
+	color: #00B5B5;
+}
+blockquote {
+	background-color: #F0F0F0;
+	margin: 15px;
+	padding: 20px;
+}
+body, html {
+	margin: 110px 30px 0 30px;
+	color: #3E4651;
+	font-family: pier;
+	min-width: 750px;
+}
+#footer {
+	background-color: #F0F0F0;
+	margin: 0;
+	padding: 25px 60px;
+	height: 50px;
+	text-align: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+	padding: 0;
+	margin: 20px 0;
+	font-family: pier_bold;
+}
+h1 {
+	font-size: 50px;
+	color: #F1654C;
+}
+h2 {
+	color: #F1654C;
+}
+#header {
+	background-color: #F0F0F0;
+	margin: 0;
+	padding: 25px 60px;
+	height: 150px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+}
+hr {
+	height: 5px;
+	border-radius: 2px;
+	background-color: #DDDDDD;
+	border: none;
+}
+input[type="number"] {
+	width: 40px;
+}
+nav {
+	position: absolute;
+	top: 25px;
+	right: 60px;
+}
+nav a, nav #this_page_link {
+	display: inline-block;
+	padding: 10px;
+	text-decoration: none;
+}
+nav a:hover {
+	text-decoration: underline;
+}
+td, th {
+	padding: 10px;
+	vertical-align: top;
+}
+th {
+	font-family: pier_bold;
+	text-align: left;
+}
+th[colspan="2"] {
+	font-size: 20px;
+	color: #00B5B5;
+}
+tr:first-child td:first-child {
+	width: 250px;
+}
+tr:first-child th:first-child {
+	width: 500px;
+}

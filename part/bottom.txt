@@ -1,0 +1,6 @@
+		<DIV id="footer">
+			"A Tech Life": Lens Artifact by Jonathan Lam<BR />
+			Contact me at <A href="mailto:jlam55555@gmail.com&subject=A%20Tech%20%Life%Questions/Comments" title="This will open in your default mail client.">jlam55555@gmail.com</A>.
+		</DIV>
+	</BODY>
+</HTML>
