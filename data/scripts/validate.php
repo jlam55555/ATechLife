@@ -1,7 +1,9 @@
 <?php
 	// Check to see if recently submitted
-	if(isset($_COOKIE["used"]))
+	if(isset($_COOKIE["used"])) {
 		header("Location: ../../survey.php?err=wait");
+		exit();
+	}
 	$checkboxes = array("sm_1"=>"off","sm_3_fb"=>"off","sm_3_tw"=>"off","sm_3_in"=>"off","in_1"=>"off","in_4"=>"off","st_2_sm"=>"off","st_2_ta"=>"off","st_2_la"=>"off","st_2_de"=>"off","st_2_ot"=>"off","st_4_in"=>"off","st_4_me"=>"off","st_4_ga"=>"off","st_4_sc"=>"off","st_4_sm"=>"off","st_4_oc"=>"off","st_4_ot"=>"off","ge_1"=>"off","ge_2"=>"off");
 	foreach($checkboxes as $key => $val) {
 		if(isset($_POST[$key]))
@@ -30,6 +32,8 @@
 			header("Location: ../../survey.php?err=exists");
 			exit();
 		}
+	// Set cookie
+	$bool = setcookie("used","used",time()+300);
 	// Enter all data into XML
 	$point = $data->addChild("POINT");
 	$point->addAttribute("name", $name);
@@ -42,20 +46,5 @@
 	$dom->formatOutput = true;
 	$dom->loadXML($data->asXML());
 	file_put_contents("../data.xml", $dom->saveXML());
-	/*setcookie("used","used",300);
-	$xml = simplexml_load_file("../data.xml");
-	if(isset($xml->$name))	// Fix this
-		header("Location: ../../survey.php?err=exists");
-	$new = $xml->addChild("point");
-	foreach($_POST as $key => $val)
-		if($val == "")
-			header("Location: ../../survey.php?err=blank");
-		else
-			$new->addChild(strtoupper($key), $val);
-	foreach($checkboxes as $val) {
-		if(!isset($$val))
-			$new->addChild(strtoupper($val), "off");
-	}
-	file_put_contents("../data.xml",$xml->asXml());
-	header("Location: ../../index.php?msg=success");*/
+	header("Location: ../../index.php?msg=success");
 ?>
