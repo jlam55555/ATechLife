@@ -9,6 +9,7 @@
 			<META name="description" content="Jonathan Lam's Lens project: Show the quick assimilation of technologies into society using data from a survey." />
 			<META name="keywords" content="Jonathan Lam, lens, project, technology, assimilation, incorporation, integration" />
 			<META name="author" content="Jonathan Lam" />
+			<LINK rel="icon" type="img/x-icon" href="res/img/favicon.ico" />
 			<LINK rel="stylesheet" type="style/css" href="res/style.css" />
 			<SCRIPT src="res/script.js"></SCRIPT>
 		</HEAD>
