@@ -17,7 +17,8 @@
 		// Answer validation
 		// Give values to keys
 		foreach($answers as $key => $val) {
-			if($val == "" || (is_numeric($val) && ($val < 0 || $val % 1 != 0)))
+			$val = trim($val);
+			if($val == "" || preg_match("/[^0-9A-Za-z\'\s]/", $val) || (is_numeric($val) && ($val < 0 || $val % 1 != 0)))
 				header("Location: ../../survey.php?err=invalid");
 			$answers[$key] = $key;
 		}
