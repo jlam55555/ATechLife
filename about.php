@@ -31,14 +31,14 @@
 		var data = [
 			{
 				value: submitted,
-				color: "#F7464A",
-				highlight: "#FF5A5E",
+				color: "#46BFBD",
+				highlight: "#5AD3D1",
 				label: labelSubmitted
 			},
 			{
 				value: left,
-				color: "#46BFBD",
-				highlight: "#5AD3D1",
+				color: "#F7464A",
+				highlight: "#FF5A5E",
 				label: labelLeft
 			}
 		]
