@@ -18,8 +18,10 @@
 		// Give values to keys
 		foreach($answers as $key => $val) {
 			$val = trim($val);
-			if($val == "" || preg_match("/[^0-9A-Za-z\'\s]/", $val) || (is_numeric($val) && ($val < 0 || $val % 1 != 0)))
+			if($val == "" || preg_match("/[^0-9A-Za-z\'\s]/", $val) || (is_numeric($val) && ($val < 0 || $val % 1 != 0))) {
 				header("Location: ../../survey.php?err=invalid");
+				exit();
+			}
 			$answers[$key] = $key;
 		}
 		// Remove "name" and "gender" data- will be used as attributes instead
