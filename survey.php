@@ -46,7 +46,7 @@
 			<TR>
 				<TH>When did you start using social media?</TH>
 				<TD>
-					<SELECT name="in_2">
+					<SELECT name="sm_4">
 						<OPTION value="1999">1999</OPTION>
 						<OPTION value="2000">2000</OPTION>
 						<OPTION value="2001">2001</OPTION>

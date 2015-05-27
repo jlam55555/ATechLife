@@ -25,7 +25,12 @@ body, html {
 	font-family: pier;
 	min-width: 750px;
 }
-#footer {
+canvas {
+	display: block;
+	margin: 50px auto;
+}
+canvas#survey_num {}
+div#footer {
 	padding: 25px 60px;
 	height: 50px;
 	text-align: center;
@@ -33,9 +38,17 @@ body, html {
 	left: 0;
 	right: 0;
 }
-#footer, #header {
+div#footer, div#header {
 	background-color: #3E4651;
 	color: #F0F0F0;
+}
+div#header {
+	padding: 25px 60px;
+	height: 150px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
 }
 h1, h2, h3, h4, h5, h6 {
 	padding: 0;
@@ -48,14 +61,6 @@ h1 {
 }
 h2 {
 	color: #F1654C;
-}
-#header {
-	padding: 25px 60px;
-	height: 150px;
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
 }
 hr {
 	height: 5px;
@@ -80,6 +85,12 @@ nav a, nav #this_page_link {
 }
 nav a:hover {
 	text-decoration: underline;
+}
+span#cite {
+	font-size: 10px;
+	display: block;
+	width: 100%;
+	text-align: center;
 }
 td, th {
 	padding: 10px;

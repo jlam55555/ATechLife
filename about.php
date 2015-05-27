@@ -1,4 +1,5 @@
 <?php include "part/top.php"; ini("A Tech Life | About",3) ?>
+	<SCRIPT src="res/Chart.min.js"></SCRIPT>
 	<H2>About this Project</H2>
 	<H6>If you have not filled out the survey (and are from Joel Barlow High School, please fill out the <A href="survey.php">survey</A> so that data can be obtained.)</H6>
 	<P>Ever thought about living without the Internet? Without social media? Without smart, ulra-small devices? Although these technologies are very new (within the last few years), they have been well-integrated into society throughout the world. My project is not focused on the world, but on our little modern community of Easton and Redding in the United States, a prime example of this idea. I've created a simple program to (hopefully) display the tight incorporation of some modern technologies into our lives &mdash; and not only in a positive way.</P>
@@ -14,7 +15,36 @@
 		foreach($xml->POINT as $point)
 			$x++;
 		echo $x;
-		?> survey submissions, but I am looking for at least 20. My presentation will be on Tuesday, June 2nd.</P>
+		?> survey submissions, but I am looking for at least 25. My presentation will be on Tuesday, June 2nd.</P>
+	<CANVAS id="survey_num" height="300" width="300">Your browser does not support the &lt;canvas&gt; element. Get a new browser that supports the newest web protocols, such as Google Chrome, Internet Explorer, Safari, or Mozilla Firefox.</CANVAS>
+	<SPAN id="cite">Chart script courtesy of <A href="http://www.chartjs.org" target="_blank">Chart.js</A>.</SPAN>
+	<SCRIPT>
+		// Pie chart script courtesy of Chart.js at http://www.chartjs.org/
+		var submitted = <?= $x ?>;
+		var total = 25;
+		var ctx = document.getElementById("survey_num").getContext("2d");
+		var left = (total > submitted) ? total - submitted : 0;
+		var labelSubmitted =
+			(total > submitted) ? "Submitted" :
+			(total == submitted) ? "Reached goal of " :
+			submitted + "Goal surpassed! Submitted";
+		var labelLeft = "Submissions to go";
+		var data = [
+			{
+				value: submitted,
+				color: "#F7464A",
+				highlight: "#FF5A5E",
+				label: labelSubmitted
+			},
+			{
+				value: left,
+				color: "#46BFBD",
+				highlight: "#5AD3D1",
+				label: labelLeft
+			}
+		]
+		var newChart = new Chart(ctx).Pie(data);
+	</SCRIPT>
 	<HR />
 	<H2>About this Website</H2>
 	<P>This is by no means a professional website. I made this from my basic programming knowledge, from the online tutorials common on the Internet.</P>
