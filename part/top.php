@@ -14,7 +14,7 @@
 		</HEAD>
 		<BODY>
 			<DIV id="header">
-				<H1>A Tech Life</H1>
+				<A href="index.php" style="text-decoration: none;"><H1>A Tech Life</H1></A>
 				<H3>A Lens Artifact Project By Jonathan Lam</H3>
 				<NAV>
 					<?php
