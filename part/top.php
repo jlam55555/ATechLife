@@ -12,6 +12,7 @@
 			<LINK rel="icon" type="img/x-icon" href="res/img/favicon.ico" />
 			<LINK rel="stylesheet" type="style/css" href="res/style.css" />
 			<SCRIPT src="res/script.js"></SCRIPT>
+			<SCRIPT src="res/Chart.min.js"></SCRIPT>
 		</HEAD>
 		<BODY>
 			<DIV id="header">

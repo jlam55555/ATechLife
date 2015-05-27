@@ -1,5 +1,4 @@
 <?php include "part/top.php"; ini("A Tech Life | About",3) ?>
-	<SCRIPT src="res/Chart.min.js"></SCRIPT>
 	<H2>About this Project</H2>
 	<H6>If you have not filled out the survey (and are from Joel Barlow High School, please fill out the <A href="survey.php">survey</A> so that data can be obtained.)</H6>
 	<P>Ever thought about living without the Internet? Without social media? Without smart, ulra-small devices? Although these technologies are very new (within the last few years), they have been well-integrated into society throughout the world. My project is not focused on the world, but on our little modern community of Easton and Redding in the United States, a prime example of this idea. I've created a simple program to (hopefully) display the tight incorporation of some modern technologies into our lives &mdash; and not only in a positive way.</P>
