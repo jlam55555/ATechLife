@@ -6,7 +6,7 @@
 		<HEAD>
 			<TITLE><?= $title ?></TITLE>
 			<META charset="utf-8" />
-			<META name="description" content="Jonathan Lam's Lens project: Show the quick assimilation of technologies into society using data from a survey." />
+			<META name="description" content="Jonathan Lam's Lens Artifact: Showing the quick assimilation of technologies into society using data from our own community." />
 			<META name="keywords" content="Jonathan Lam, lens, project, technology, assimilation, incorporation, integration" />
 			<META name="author" content="Jonathan Lam" />
 			<LINK rel="icon" type="img/x-icon" href="res/img/favicon.ico" />
