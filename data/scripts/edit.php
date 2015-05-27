@@ -32,6 +32,7 @@
 </STYLE>
 <SCRIPT>
 	function del(name) {
+                if(!confirm("Are you sure?")) return;
 		var xmlhttp = new XMLHttpRequest();
 		xmlhttp.open("GET","delete.php?name=" + name.replace(" ", "%20"),true);
 		xmlhttp.send();
@@ -39,7 +40,7 @@
 		xmlhttp.onreadystatechange = function() {
 			if(xmlhttp.readyState==4 && xmlhttp.status==200)
 				if(xmlhttp.responseText == "true")
-					document.body.removeChild(document.getElementById(name.replace(" ", "%20")));
+					document.body.removeChild(document.getElementById(name));
 				else
 					alert(xmlhttp.responseText);
 		}
@@ -49,14 +50,12 @@
 <?php
 	$data = simplexml_load_file("../data.xml");
 	foreach($data->POINT as $datapoint) {
-		echo "<DIV id='" . str_replace(" ", "%20", $datapoint["name"]) . "'><H1>" . $datapoint["name"] . "</H1><H3>" . $datapoint["gender"] . "</H3><H3>" . date("m/d/y g:i:s a", intval($datapoint["time"])) . "</H3>";
-		foreach($datapoint->children() as $dat => $val) {
+		echo "<DIV id='" . base64_decode($datapoint["name"]) . "'><H1>" . base64_decode($datapoint["name"]) . "</H1><H3>" . $datapoint["gender"] . "</H3><H3>" . date("m/d/y g:i:s a", intval($datapoint["time"])) . "</H3>";
+                foreach($datapoint->children() as $dat => $val) {
 			echo "$dat: $val<BR />";
 		}
 		echo "<BUTTON onclick='del(\"" . $datapoint["name"] . "\")'>X</BUTTON></DIV>";
 	}
-?>
-<?php
 	} else
 		echo "You are not authorized to view this file.<BR />";
 ?>

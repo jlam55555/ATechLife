@@ -28,7 +28,7 @@
 	// Check if name was taken
 	$data = simplexml_load_file("../data.xml");
 	foreach($data->POINT as $val)
-		if($val["name"] == $name) {
+		if($val["name"] == base64_encode($name)) {
 			header("Location: ../../survey.php?err=exists");
 			exit();
 		}
@@ -36,7 +36,7 @@
 	$bool = setcookie("used","used",time()+300);
 	// Enter all data into XML
 	$point = $data->addChild("POINT");
-	$point->addAttribute("name", $name);
+	$point->addAttribute("name", base64_encode($name));
 	$point->addAttribute("gender", $gender);
 	$point->addAttribute("time", time());
 	foreach($answers as $val)
