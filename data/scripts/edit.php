@@ -1,3 +1,14 @@
+<?php
+	if(!isset($_POST["user"])) {
+?>
+<FORM action="" method="post">
+	<INPUT type="text" name="user" />
+	<INPUT type="password" name="pass" />
+	<BUTTON>Enter</BUTTON>
+</FORM>
+<?php
+	} else if(password_verify($_POST["user"], '$2y$10$fP3uEuXlWQSqiw3Ipx6xWu8sPQmxebCDYuQg/GP/i7uPVVyWr5XL.') && password_verify($_POST["pass"], '$2y$10$qQJoPkqSqVg.GeWA1f1UIuDCcyi5iZQUqx51mYpvD/mh1KA5Oj4Ee')) {
+?>
 <STYLE>
 	div {
 		background-color: #F0F0F0;
@@ -44,4 +55,8 @@
 		}
 		echo "<BUTTON onclick='del(\"" . $datapoint["name"] . "\")'>X</BUTTON></DIV>";
 	}
+?>
+<?php
+	} else
+		echo "You are not authorized to view this file.<BR />";
 ?>
