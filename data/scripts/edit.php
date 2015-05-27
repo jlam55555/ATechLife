@@ -31,7 +31,7 @@
 	}
 </STYLE>
 <SCRIPT>
-	function del(id) {
+	function del(id, name) {
 		if(!confirm("Are you sure you want do delete this user?")) return;
 		var xmlhttp = new XMLHttpRequest();
 		xmlhttp.open("GET","delete.php?name=" + name.replace(" ", "%20"),true);
@@ -40,7 +40,7 @@
 		xmlhttp.onreadystatechange = function() {
 			if(xmlhttp.readyState==4 && xmlhttp.status==200)
 				if(xmlhttp.responseText == "true")
-					document.body.removeChild(document.getElementById(id));
+					document.body.removeChild(document.getElementById(id.toString()));
 				else
 					alert(xmlhttp.responseText);
 		}
@@ -51,10 +51,10 @@
 	$data = simplexml_load_file("../data.xml");
 	$id = 0;
 	foreach($data->POINT as $datapoint) {
-		echo "<DIV id='" . base64_decode($datapoint["name"]) . "'><H1>" . base64_decode($datapoint["name"]) . "</H1><H3>" . $datapoint["gender"] . "</H3><H3>" . date("m/d/y g:i:s a", intval($datapoint["time"])) . "</H3>";
+		echo "<DIV id='$id'><H1>" . base64_decode($datapoint["name"]) . "</H1><H3>" . $datapoint["gender"] . "</H3><H3>" . date("m/d/y g:i:s a", intval($datapoint["time"])) . "</H3>";
 		foreach($datapoint->children() as $dat => $val)
 			echo "$dat: $val<BR />";
-		echo "<BUTTON onclick='del($id)'>X</BUTTON></DIV>";
+		echo "<BUTTON onclick='del($id, \"" . $datapoint["name"] . "\")'>X</BUTTON></DIV>";
 		$id++;
 	}
 	} else
