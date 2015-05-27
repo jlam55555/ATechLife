@@ -4,6 +4,10 @@
 		header("Location: ../../survey.php?err=wait");
 		exit();
 	}
+	if(!isset($_POST["name"]) {
+		header("Location: ../../survey.php");
+		exit;
+	}
 	$checkboxes = array("sm_1"=>"off","sm_3_fb"=>"off","sm_3_tw"=>"off","sm_3_in"=>"off","in_1"=>"off","in_4"=>"off","st_2_sm"=>"off","st_2_ta"=>"off","st_2_la"=>"off","st_2_de"=>"off","st_2_ot"=>"off","st_4_in"=>"off","st_4_me"=>"off","st_4_ga"=>"off","st_4_sc"=>"off","st_4_sm"=>"off","st_4_oc"=>"off","st_4_ot"=>"off","ge_1"=>"off","ge_2"=>"off");
 	foreach($checkboxes as $key => $val) {
 		if(isset($_POST[$key]))
