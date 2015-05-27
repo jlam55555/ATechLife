@@ -14,13 +14,13 @@
 		foreach($xml->POINT as $point)
 			$x++;
 		echo $x;
-		?> survey submissions, but I am looking for at least 25. My presentation will be on Tuesday, June 2nd.</P>
+		?> survey submissions, but I am looking for at least 40. My presentation will be on Tuesday, June 2nd.</P>
 	<CANVAS id="survey_num" height="300" width="300">Your browser does not support the &lt;canvas&gt; element. Get a new browser that supports the newest web protocols, such as Google Chrome, Internet Explorer, Safari, or Mozilla Firefox.</CANVAS>
 	<SPAN id="cite">Chart script courtesy of <A href="http://www.chartjs.org" target="_blank">Chart.js</A>.</SPAN>
 	<SCRIPT>
 		// Pie chart script courtesy of Chart.js at http://www.chartjs.org/
 		var submitted = <?= $x ?>;
-		var total = 25;
+		var total = 40;
 		var ctx = document.getElementById("survey_num").getContext("2d");
 		var left = (total > submitted) ? total - submitted : 0;
 		var labelSubmitted =
