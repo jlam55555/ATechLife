@@ -4,7 +4,7 @@
 		header("Location: ../../survey.php?err=wait");
 		exit();
 	}
-	if(!isset($_POST["name"]) {
+	if(!isset($_POST["name"])) {
 		header("Location: ../../survey.php");
 		exit;
 	}
