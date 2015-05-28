@@ -26,10 +26,19 @@ body, html {
 	min-width: 750px;
 }
 canvas {
-	display: block;
+	display: inline-block;
 	margin: 50px auto;
 }
-canvas#survey_num {}
+canvas#survey_num, canvas#survey_time {
+	margin: 50px 0;
+	height: 300px;
+}
+canvas#survey_num {
+	width: 30%;
+}
+canvas#survey_time {
+	width: 70%;
+}
 div#footer {
 	padding: 25px 60px;
 	height: 50px;
