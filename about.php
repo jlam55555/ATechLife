@@ -16,9 +16,10 @@
 		echo $x;
 		?> survey submissions, but I am looking for at least 40. My presentation will be on Tuesday, June 2nd.</P>
 	<CANVAS id="survey_num" height="300" width="300">Your browser does not support the &lt;canvas&gt; element. Get a new browser that supports the newest web protocols, such as Google Chrome, Internet Explorer, Safari, or Mozilla Firefox.</CANVAS>
-	<SPAN id="cite">Chart script courtesy of <A href="http://www.chartjs.org" target="_blank">Chart.js</A>.</SPAN>
+	<CANVAS id="survey_time" height="300" width="300"></CANVAS>
+	<SPAN id="cite">Chart scripts courtesy of <A href="http://www.chartjs.org" target="_blank">Chart.js</A>.</SPAN>
 	<SCRIPT>
-		// Pie chart script courtesy of Chart.js at http://www.chartjs.org/
+		// Pie and line chart scripts courtesy of Chart.js at http://www.chartjs.org/
 		var submitted = <?= $x ?>;
 		var total = 40;
 		var ctx = document.getElementById("survey_num").getContext("2d");
@@ -43,6 +44,51 @@
 			}
 		]
 		var newChart = new Chart(ctx).Pie(data);
+		
+		ctx = document.getElementById("survey_time").getContext("2d");
+		var data = {
+			labels: [<?php
+				$data = simplexml_load_file("data/data.xml");
+				$results = array();
+				foreach($data->POINT as $datapoint) {
+					$results[] = $datapoint["time"];
+				}
+				sort($results);
+				$low_hour = 3600*floor($results[0]/3600);
+				$high_hour = 3600*floor($results[count($results)-1]/3600);
+				$array_list = "";
+				$ranges_array;
+				for($i = $low_hour; $i <= $high_hour; $i += 3600) {
+					$array_list .= "\"" . date("G:00", $i) . "\", ";
+					$this_range_num = 0;
+					foreach($results as $time)
+						if($time >= $i && $time < $i+3600)
+							$this_range_num++;
+					$ranges_array[] = $this_range_num;
+				}
+				$array_list = substr($array_list, 0, count($array_list)-3);
+				$ranges_array_list = "";
+				$total = 0;
+				foreach($ranges_array as $range) {
+					$total += $range;
+					$ranges_array_list .= "$total, ";
+				}
+				echo $ranges_array_list = substr($ranges_array_list, 0, count($ranges_array_list)-3);
+			?>],
+			datasets: [
+				{
+					label: "Results",
+					fillColor: "rgba(220,220,220,0.2)",
+					strokeColor: "rgba(220,220,220,1)",
+					pointColor: "rgba(220,220,220,1)",
+					pointStrokeColor: "#fff",
+					pointHighlightFill: "#fff",
+					pointHighlightStroke: "rgba(220,220,220,1)",
+					data: [<?= $array_list ?>]
+				}
+			]
+		};
+		var newChart = new Chart(ctx).Line(data);
 	</SCRIPT>
 	<HR />
 	<H2>About this Website</H2>
