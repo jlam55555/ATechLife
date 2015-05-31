@@ -14,14 +14,14 @@
 		foreach($xml->POINT as $point)
 			$x++;
 		echo $x;
-		?> survey submissions, but I am looking for at least 40. My presentation will be on Tuesday, June 2nd.</P><!--
+		?> survey submissions, but I am looking for at least 50. My presentation will be on Tuesday, June 2nd.</P><!--
  --><CANVAS id="survey_num">Your browser does not support the &lt;canvas&gt; element. Get a new browser that supports the newest web protocols, such as Google Chrome, Internet Explorer, Safari, or Mozilla Firefox.</CANVAS><!--
  --><CANVAS id="survey_time"></CANVAS><!--
  --><SPAN id="cite">Chart scripts courtesy of <A href="http://www.chartjs.org" target="_blank">Chart.js</A>.</SPAN>
 	<SCRIPT>
 		// Pie and line chart scripts courtesy of Chart.js at http://www.chartjs.org/
 		var submitted = <?= $x ?>;
-		var total = 40;
+		var total = 50;
 		var ctx = document.getElementById("survey_num").getContext("2d");
 		var left = (total > submitted) ? total - submitted : 0;
 		var labelSubmitted =
@@ -55,15 +55,15 @@
 				}
 				sort($results);
 				//print_r($results);
-				$low_hour = 3600*floor($results[0]/3600);
-				$high_hour = 3600*floor($results[count($results)-1]/3600);
+				$low_hour = 14400*floor($results[0]/14400);
+				$high_hour = 14400*floor($results[count($results)-1]/14400);
 				$array_list = "";
 				$ranges_array;
-				for($i = $low_hour; $i <= $high_hour; $i += 3600) {
+				for($i = $low_hour; $i <= $high_hour; $i += 14400) {
 					$array_list .= "\"" . date("G:00", $i) . "\", ";
 					$this_range_num = 0;
 					foreach($results as $time)
-						if($time >= $i && $time < $i+3600)
+						if($time >= $i && $time < $i+14400)
 							$this_range_num++;
 					$ranges_array[] = $this_range_num;
 				}
@@ -89,7 +89,9 @@
 				}
 			]
 		};
-		var newChart = new Chart(ctx).Line(data);
+		var newChart = new Chart(ctx).Line(data, {
+			bezierCurve: false
+		});
 	</SCRIPT>
 	<HR />
 	<H2>About this Website</H2>

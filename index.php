@@ -7,49 +7,6 @@
 	<H2>Diagrams</H2>
 	<H6>If you have not filled out the survey (and are from Joel Barlow High School, please fill out the <A href="survey.php">survey</A> so that data can be obtained.)</H6>
 	<HR />
-	<STYLE>
-		#container {
-			color: rgba(0, 0, 0, 0);
-			margin-bottom: 100px;
-			position: relative;
-		}
-		#cover {
-			position: fixed;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			background-color: rgba(220, 220, 220, 0.9);
-			color: #000;
-			text-align: center;
-			font-size: 100px;
-		}
-		.chart_div {
-			width: 50%;
-			margin: 0;
-			padding: 0;
-			display: inline-block;
-			vertical-align: text-top;
-		}
-		.chart_div canvas, .chart_div select {
-			display: block;
-			margin: 20px auto 0 auto;
-		}
-		.chart_div h3, .chart_div h4, .chart_div p, .chart_div li {
-			width: 100%;
-			text-align: center;
-		}
-		.short {
-			vertical-align: -200px;
-		}
-		
-		#sm_4_div {
-			width: 100%;
-		}
-		#in_2_div, #in_3_div, #in_4_div {
-			width: 33%;
-		}
-	</STYLE>
 	<DIV id="container">
 	<DIV id="cover">
 		LOADING...
