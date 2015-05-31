@@ -1,62 +1,90 @@
 <?php
 	if(!isset($_POST["user"])) {
 ?>
-<FORM action="" method="post">
-	<INPUT type="text" name="user" />
-	<INPUT type="password" name="pass" />
-	<BUTTON>Enter</BUTTON>
-</FORM>
-<?php
-	} else if(password_verify($_POST["user"], '$2y$10$fP3uEuXlWQSqiw3Ipx6xWu8sPQmxebCDYuQg/GP/i7uPVVyWr5XL.') && password_verify($_POST["pass"], '$2y$10$qQJoPkqSqVg.GeWA1f1UIuDCcyi5iZQUqx51mYpvD/mh1KA5Oj4Ee')) {
-?>
-<STYLE>
-	div {
-		background-color: #F0F0F0;
-		padding: 25px;
-		margin: 25px; 
-		position: relative;
-	}
-	button {
-		border: none;
-		padding: 10px;
-		font-size: 20px;
-		width: 60px;
-		height: 60px;
-		text-align: center;
-		position: absolute;
-		background-color: #3E4651;
-		color: #F0F0F0;
-		top: 20px;
-		right: 20px;
-	}
-</STYLE>
-<SCRIPT>
-	function del(id, name) {
-		if(!confirm("Are you sure you want do delete this user?")) return;
-		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.open("GET","delete.php?name=" + name.replace(" ", "%20"),true);
-		xmlhttp.send();
-		
-		xmlhttp.onreadystatechange = function() {
-			if(xmlhttp.readyState==4 && xmlhttp.status==200)
-				if(xmlhttp.responseText == "true")
-					document.body.removeChild(document.getElementById(id.toString()));
-				else
-					alert(xmlhttp.responseText);
+	<FORM action="" method="post">
+		<INPUT type="text" name="user" />
+		<INPUT type="password" name="pass" />
+		<BUTTON>Enter</BUTTON>
+	</FORM>
+	<?php
+		} else if(password_verify($_POST["user"], '$2y$10$fP3uEuXlWQSqiw3Ipx6xWu8sPQmxebCDYuQg/GP/i7uPVVyWr5XL.') && password_verify($_POST["pass"], '$2y$10$qQJoPkqSqVg.GeWA1f1UIuDCcyi5iZQUqx51mYpvD/mh1KA5Oj4Ee')) {
+	?>
+	<STYLE>
+		.off {
+			background-color: red;
 		}
-	}
-</SCRIPT>
-
-<?php
-	$data = simplexml_load_file("../data.xml");
-	$id = 0;
-	foreach($data->POINT as $datapoint) {
-		echo "<DIV id='$id'><H1>" . base64_decode($datapoint["name"]) . "</H1><H3>" . $datapoint["gender"] . "</H3><H3>" . date("m/d/y g:i:s a", intval($datapoint["time"])) . "</H3>";
-		foreach($datapoint->children() as $dat => $val)
-			echo "$dat: $val<BR />";
-		echo "<BUTTON onclick='del($id, \"" . $datapoint["name"] . "\")'>X</BUTTON></DIV>";
-		$id++;
-	}
+		.on {
+			background-color: green;
+		}
+		table {
+			border-collapse: collapse;
+		}
+		th, td {
+			margin: 0;
+			padding: 0 10px;
+		}
+		tr:nth-child(odd) {
+			background-color: #F0F0F0;
+		}
+	</STYLE>
+	<SCRIPT>
+		function del(id, name) {
+			if(!confirm("Are you sure you want do delete this user?")) return;
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.open("GET","delete.php?name=" + name.replace(" ", "%20"),true);
+			xmlhttp.send();
+			
+			xmlhttp.onreadystatechange = function() {
+				if(xmlhttp.readyState==4 && xmlhttp.status==200)
+					if(xmlhttp.responseText == "true")
+						document.getElementsByTagName("TBODY")[0].removeChild(document.getElementById(id.toString()));
+					else
+						alert(xmlhttp.responseText);
+			}
+		}
+	</SCRIPT>
+	<TABLE>
+	<?php
+		$data = simplexml_load_file("../data.xml");
+		$id = 0;
+	?>
+		<THEAD>
+			<TR>
+				<TH>Name</TH>
+				<TH>DEL</TH>
+				<TH>Gender</TH>
+				<TH>Time</TH>
+				<?php
+					foreach($data->POINT[0]->children() as $dat => $val) {
+						echo "<TH>$dat</TH>";
+					}
+				?>
+			</TR>
+		</THEAD>
+		<TBODY>
+	<?php
+		foreach($data->POINT as $datapoint) {
+	?>
+			<TR id="<?= $id ?>">
+				<TH><?= base64_decode($datapoint["name"]) ?></TH>
+				<TD><BUTTON onclick="del(<?= $id ?>, '<?= $datapoint["name"] ?>')">X</BUTTON></TD>
+				<TD><?= $datapoint["gender"] ?></TD>
+				<TD><?= date("m/d/y G:i:s", intval($datapoint["time"])) ?></TD>
+				<?php
+					foreach($datapoint->children() as $dat => $val) {
+						if($val == "on")
+							echo "<TD class='on'><BR /></TD>";
+						else if($val == "off")
+							echo "<TD class='off'></TD>";
+						else
+							echo "<TD>$val</TD>";
+					}
+				?>
+			</TR>
+	<?php
+			$id++;
+		}
+		echo "</TBODY></TABLE>";
 	} else
 		echo "You are not authorized to view this file.<BR />";
 ?>
