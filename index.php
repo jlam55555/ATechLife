@@ -47,13 +47,13 @@
 						break;
 					case "fb":
 						<?php
-							$sm_1_on = 0;
-							$sm_1_off = 0;
+							$sm_1_fb_on = 0;
+							$sm_1_fb_off = 0;
 							foreach($data->POINT as $datapoint)
-								($datapoint->SM_3_FB == "on") ? $sm_1_on++: $sm_1_off++;
+								($datapoint->SM_3_FB == "on") ? $sm_1_fb_on++: $sm_1_fb_off++;
 						?>
-						sm_1_on = <?= $sm_1_on ?>;
-						sm_1_off = <?= $sm_1_off ?>;
+						sm_1_on = <?= $sm_1_fb_on ?>;
+						sm_1_off = <?= $sm_1_fb_off ?>;
 						sm_name = "Facebook";
 						break;
 					case "tw":
@@ -69,13 +69,13 @@
 						break;
 					case "in":
 						<?php
-							$sm_1_on = 0;
-							$sm_1_off = 0;
+							$sm_1_in_on = 0;
+							$sm_1_in_off = 0;
 							foreach($data->POINT as $datapoint)
-								($datapoint->SM_3_IN == "on") ? $sm_1_on++: $sm_1_off++;
+								($datapoint->SM_3_IN == "on") ? $sm_1_in_on++: $sm_1_in_off++;
 						?>
-						sm_1_on = <?= $sm_1_on ?>;
-						sm_1_off = <?= $sm_1_off ?>;
+						sm_1_on = <?= $sm_1_in_on ?>;
+						sm_1_off = <?= $sm_1_in_off ?>;
 						sm_name = "Instagram";
 						break;
 				}
@@ -141,7 +141,7 @@
 	</DIV><!--
 	--><DIV id="sm_4_div" class="chart_div">
 		<H3>Numbers Using Social Media (Years)</H3>
-		<CANVAS id="sm_4" width="750" height="500"></CANVAS>
+		<CANVAS id="sm_4" width="300" height="300"></CANVAS>
 		<BR />
 		<SELECT onchange="draw_sm_4(this.value)">
 			<OPTION value="total">Total</OPTION>
@@ -198,6 +198,18 @@
 			draw_sm_4("total");
 		</SCRIPT>
 	</DIV><!--
+	--><DIV id="sm_note_div" class="chart_div short">
+		<?php
+			$total = $sm_1_fb_off + $sm_1_fb_on;
+			$fb_per = round(100*($sm_1_fb_on/$total));
+			$in_per = round(100*($sm_1_in_on/$total));
+		?>
+		<H2>Note that:</H2>
+		<UL>
+			<LI>Facebook is less than a decade old***, but is already used by <?= $fb_per ?>% of people.</LI>
+			<LI>Instagram is less than half a decade old****, but is already used by <?= $in_per ?>% of people.</LI>
+		</UL>
+	</DIV><!--
 	--><HR />
 	<H2>Internet</H2><!--
 	--><DIV id="in_4_div" class="chart_div">
@@ -211,7 +223,7 @@
 				foreach($data->POINT as $datapoint)
 					($datapoint->IN_4 == "on") ? $in_4_on++ : $in_4_off++;
 			?>
-			var data = [
+			var in_4_data = [
 				{
 					value: <?= $in_4_on ?>,
 					color:"#F7464A",
@@ -226,7 +238,10 @@
 				},
 			]
 			var ctx = document.getElementById("in_4").getContext("2d");
-			var myPieChart = new Chart(ctx).Pie(data);
+			var myPieChart = new Chart(ctx);
+			setTimeout(function() {
+				myPieChart.Pie(in_4_data);
+			}, 2000);
 		</SCRIPT>
 	</DIV><!--
 	--><DIV id="in_2_div" class="chart_div short">
@@ -309,8 +324,17 @@
 					bezierCurve: false
 				});
 			}
-			draw_in_3("total");
+			setTimeout(draw_in_3, 2000, "total");
 		</SCRIPT>
+	</DIV><!--
+	--><DIV id="in_note_div" class="chart_div short">
+		<H2>Note that*****:</H2>
+		<UL>
+			<LI>The modern Internet was created in the early 1980s, but it really only started expanding in the 1980s-90s.</LI>
+			<LI>From the during the late 1990s to the early 2000s, Internet traffic grew by 100% a year, and the number of users grew from 20-50%.</LI>
+			<LI>In 1993, only 1% of two-way telocommunication information was on the Internet; by 2007, 97% of it was on the Internet.</LI>
+			<LI>By 2011, over 30% of the world's population used the Internet.</LI>
+		</UL>
 	</DIV><!--
 	--><HR />
 	<H2>Digital Devices and "Smart" Technology</H2><!--
@@ -348,7 +372,7 @@
 					if($datapoint->ST_2_OT == "on") $st_2_ot++;
 				}
 			?>
-			var data = [
+			var st_2_data = [
 				{
 					value: <?= round(100*($st_2_sm/$count)) ?>,
 					color:"#F7464A",
@@ -382,7 +406,10 @@
 
 			];
 			var ctx = document.getElementById("st_2").getContext("2d");
-			var myPolarAreaChart = new Chart(ctx).PolarArea(data);
+			var st_2_polar = new Chart(ctx);
+			setTimeout(function() {
+				st_2_polar.PolarArea(st_2_data);
+			}, 4000);
 		</SCRIPT>
 	</DIV><!--
 	--><DIV id="st_4_div" class="chart_div">
@@ -401,7 +428,7 @@
 					if($datapoint->ST_4_OT == "on") $st_4_ot++;
 				}
 			?>
-			var data = [
+			var st_4_data = [
 				{
 					value: <?= round(100*($st_4_in/$count)) ?>,
 					color:"#F7464A",
@@ -447,7 +474,10 @@
 
 			];
 			var ctx = document.getElementById("st_4").getContext("2d");
-			var myPolarAreaChart = new Chart(ctx).PolarArea(data);
+			var st_4_polar = new Chart(ctx);
+			setTimeout(function() {
+				st_4_polar.PolarArea(st_4_data);
+			}, 4000);
 		</SCRIPT>
 	</DIV><!--
 	--><DIV id="st_3_div" class="chart_div short">
@@ -509,7 +539,7 @@
 							$ge_4_help++;
 					}
 			?>
-			var data = [
+			var ge_4_data = [
 				{
 					value: <?= $ge_4_help ?>,
 					color:"#C744AA",
@@ -536,32 +566,25 @@
 				}
 			]
 			var ctx = document.getElementById("ge_4").getContext("2d");
-			var myDoughnutChart = new Chart(ctx).Doughnut(data);
+			var ge_4_doughnut = new Chart(ctx);
+			setTimeout(function() {
+				ge_4_doughnut.Doughnut(ge_4_data);
+			}, 6000);
 		</SCRIPT>
 	</DIV><!--
 	--><HR />
 	<H2>Notes</H2>
 	<P>* Or Internet applications</P>
 	<P>** Apparently, judging by the results of the graph, we have watched too many post-apocalyptic movies and are too worried about artificial intelligence. I personally am not so worried about this.</P>
+	<P>*** According to <A href="http://en.wikipedia.org/wiki/Facebook#2006.E2.80.932011:_public_access.2C_Microsoft_alliance_and_rapid_growth">Wikipedia</A>, Facebook was opened to the public on September 4th, 2006.</P>
+	<P>**** According to <A href="http://en.wikipedia.org/wiki/Instagram">Wikipedia</A>, Instagram was opened to the public on October 6th, 2010.</P>
+	<P>***** Statistics from <A href="http://en.wikipedia.org/wiki/Internet#History">Wikipedia</A>.</P>
 	</DIV>
 	<SCRIPT>
 		function removeCover() {
-			var opacity = 90;
-			var cover = document.getElementById("cover");
-			var container = document.getElementById("container");
-			var t = setInterval(function() {
-				opacity -= 5;
-				opacity_string = (opacity >= 10) ? opacity : "0" + opacity;
-				cover.style.backgroundColor = "rgba(220, 220, 220, 0." + opacity_string + ")";
-				cover.style.color = "rgba(0, 0, 0, 0." + opacity_string + ")";
-				neg_opacity_string = (opacity <= 80) ? "0." + (90-opacity) : "0.0" + (90-opacity);
-				container.style.color = "rgba(0, 0, 0, " + neg_opacity_string + ")";
-				if(opacity == 0) {
-					clearInterval(t);
-					container.style.color = "black";
-				}
-			}, 50);
 			cover.style.zIndex = "-1";
+			document.getElementById("cover").style.display = "none";
+			document.getElementById("container").style.color = "black";
 		}
 		document.body.onload = setTimeout(removeCover, 1000);
 	</SCRIPT>
