@@ -10,7 +10,7 @@
 			<META name="keywords" content="Jonathan Lam, lens, project, technology, assimilation, incorporation, integration" />
 			<META name="author" content="Jonathan Lam" />
 			<LINK rel="icon" type="img/x-icon" href="res/img/favicon.ico" />
-			<LINK rel="stylesheet" type="style/css" href="res/style.css" />
+			<LINK rel="stylesheet" type="text/css" href="res/style.css" />
 			<SCRIPT src="res/script.js"></SCRIPT>
 			<SCRIPT src="res/Chart.min.js"></SCRIPT>
 		</HEAD>

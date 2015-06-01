@@ -354,7 +354,7 @@
 				$st_1_yo_mean = round(array_sum($st_1_yo_array)/$length);
 			?>
 		</SCRIPT>
-		<H4>Average # of devices per household: <?= $st_1_ho_mean ?> devices<H4>
+		<H4>Average # of devices per household: <?= $st_1_ho_mean ?> devices</H4>
 		<H4>Average # of devices per person: <?= $st_1_yo_mean ?> devices</H4>
 	</DIV><!--
 	--><DIV id="st_2_div" class="chart_div">
@@ -482,16 +482,14 @@
 	</DIV><!--
 	--><DIV id="st_3_div" class="chart_div short">
 		<H3>Time Spent Looking at Screens (of electronic devices)</H3>
-		<SCRIPT>
-			<?php
-				$st_3_array;
-				foreach($data->POINT as $datapoint)
-					$st_3_array[] = intval($datapoint->ST_3);
-				$length = count($st_3_array);
-				$st_3_mean = round(array_sum($st_3_array)/$length);
-			?>
-		</SCRIPT>
-		<H4>Average time spent looking at screens: <?= $st_3_mean ?> minutes<H4>
+		<?php
+			$st_3_array;
+			foreach($data->POINT as $datapoint)
+				$st_3_array[] = intval($datapoint->ST_3);
+			$length = count($st_3_array);
+			$st_3_mean = round(array_sum($st_3_array)/$length);
+		?>
+		<H4>Average time spent looking at screens: <?= $st_3_mean ?> minutes</H4>
 	</DIV><!--
 	--><HR />
 	<H2>Summary</H2><!--
@@ -516,7 +514,7 @@
 			<OL>
 				<LI>harm people because they make life too convenient.</LI>
 				<LI>harm people because artificial intelligence may take over.**</LI>
-				<LI>harm people because of both of the above (1&2).</LI>
+				<LI>harm people because of both of the above (1&amp;2).</LI>
 				<LI>never harm people more than help them.</LI>
 			</OL>
 		</P>
